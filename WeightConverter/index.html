@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Weight Converter</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+	<style type="text/css">
+		body{
+			margin-top: 70px;
+			background: #333;
+			color:#fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<h1 class="display-4 text-center">Weight Converter</h1>
+				<form>
+					<div class="form-group">
+
+						<input type="text" class="form-control form-control-lg" id="lbsTB" placeholder="Enter weight in pounds">
+
+					</div>
+				</form>
+
+				<div id="output">
+					<div class="card card-primary mb-2">
+						<div class="card-block">
+							<h4>Grams:</h4>
+							<div id="gramsValue"></div>
+						</div>
+					</div>
+					<div class="card card-success mb-2">
+						<div class="card-block">
+							<h4>KiloGrams:</h4>
+							<div id="kgValue"></div>
+						</div>
+					</div>
+					<div class="card card-danger mb-2">
+						<div class="card-block">
+							<h4>Ounces:</h4>
+							<div id="ounceValue"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+
+		document.getElementById('output').style.visibility = 'hidden';
+
+		document.getElementById('lbsTB').addEventListener('input', function(e) {
+				document.getElementById('output').style.visibility = 'visible';
+				let lbs = e.target.value;
+				document.getElementById('gramsValue').innerHTML = lbs/0.0022046;
+				document.getElementById('kgValue').innerHTML = lbs/2.2046;
+				document.getElementById('ounceValue').innerHTML = lbs*16;
+			});
+
+	</script>
+</body>
+
+
+</html>
+
+<!-- 
+Notes:
+
+Grid systems are used for creating page layouts through a series of rows and columns that house your content. Here's how the Bootstrap grid system works:
+
+Rows must be placed within a .container (fixed-width) or .container-fluid (full-width) for proper alignment and padding.
+Use rows to create horizontal groups of columns.
+Content should be placed within columns, and only columns may be immediate children of rows.
+
+To ensure proper rendering and touch zooming, add the viewport meta tag to your <head>.
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+https://getbootstrap.com/docs/3.3/css/ - checkout offsetting columns
+
+ -->
