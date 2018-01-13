@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>React App</title>
+
+	<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+	<style>
+		
+	    #container {
+	        padding: 50px;
+	        background-color: #EEE;
+	    }
+	    #container p {
+	        font-size: 50px;
+	        font-family: sans-serif;
+	     color: #0080a8;
+	    }
+	</style>
+</head>
+
+<body>
+
+	<div id="container"></div>
+	<div id="btn_submit"></div>
+
+	<script type="text/babel">
+		
+		class Buttonify extends React.Component {
+			render() {
+				return (
+					<div>
+						<button type={this.props.behavior}>{this.props.children}</button>
+					</div>
+				);
+			}
+		}
+
+		class HelloWorld extends React.Component {
+ 			render() {
+				return <p>Hello, {this.props.greetTarget}!</p>
+ 			}
+		}
+
+		ReactDOM.render(
+		  <HelloWorld greetTarget="Batman"/>,
+		  document.querySelector("#container")
+		);  
+
+		ReactDOM.render(
+			<div>
+				<Buttonify behavior="submit">Send Data</Buttonify>
+
+			</div>,
+			btn_submit
+		);   
+				
+	</script>
+	
+</body>
+</html>

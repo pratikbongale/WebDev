@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Transfering properties - Spread operator</title>
+
+	<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+	<style>
+	    #container {
+	        padding: 50px;
+	        background-color: #EEE;
+	    }
+
+	    #container p {
+	    	font-size: 48px,
+	    	font-family: sans-serif,
+	    	line-height: 12px,
+			color: #333;
+	    }
+	</style>
+
+</head>
+<body>
+	
+	<div id="container">
+		
+	</div>
+
+	<script type="text/babel">
+		
+		class TopParent extends React.Component {
+		  render() {
+		    
+		    return (
+		      <div>
+		        <MidParent color={this.props.color}
+		        			num={this.props.num}
+		        			size={this.props.size}/>
+		      </div>
+		    );
+		  }
+		}
+
+		class MidParent extends React.Component {
+		  render() {
+		    
+		    return (
+		      <div>
+		        <BtmParent color={this.props.color}
+		        			num={this.props.num}
+		        			size={this.props.size}/>
+		      </div>
+		    );
+		  }
+		}
+
+		class BtmParent extends React.Component {
+		  render() {
+		    
+		    return (
+		      <div>
+		        <p>color: {this.props.color}</p>
+		        <p>num: {this.props.num}</p>
+		        <p>size: {this.props.size}</p>
+		      </div>
+		    );
+		  }
+		}
+
+		var destination = document.querySelector("#container");
+		
+		ReactDOM.render(
+			<div>
+				<TopParent color="blue" num="3.14" size="medium"/>
+				
+			</div>, 
+			destination
+		);
+
+
+
+	</script>
+</body>
+</html>
